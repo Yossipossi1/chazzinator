@@ -6,7 +6,7 @@ This bot is designed to run in a Linux environment, and the instructions will be
 
 To run the bot, first [install Rust](https://www.rust-lang.org/tools/install). Then, once installed, clone this repository.
 
-You'll want to navigate to the `.env` file, and create and fill a single environment variable called `TOKEN` (or fill it out if it already exists). This will be the bot's API token. Once done, you can run `cargo run --release` in the directory to start the bot.
+You'll want to navigate to root directory and create the `.env` file based on the `.env.example` file, and fill in the environment variable called `TOKEN`. This will be the bot's API token. Once done, you can run `cargo run --release` in the directory to start the bot.
 
 ## Contributing
 
