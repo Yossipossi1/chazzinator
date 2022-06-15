@@ -63,7 +63,7 @@ async fn updater(ctx: serenity::Context, current_time: u64) -> Result<(), Error>
     let configuration = config::load();
 
     // Get the user IDs from the Visitor struct.
-    let mut visitors_id_vec = db_get_visitor_additions(current_time)?
+    let mut visitors_id_iter = db_get_visitor_additions(current_time)?
         .into_iter()
         .map(|x| x.user_id);
 
@@ -81,7 +81,7 @@ async fn updater(ctx: serenity::Context, current_time: u64) -> Result<(), Error>
 
     // For every member who is eligible for the Member role... 
     for mut member in members_vec {
-        if visitors_id_vec.any(|x| member.user.id == serenity::UserId(x)) {
+        if visitors_id_iter.any(|x| member.user.id == serenity::UserId(x)) {
             // ...add the Member role and remove the Visitor role...
             let _ = member
                 .add_role(&ctx.http, configuration.guild.roles.member)
